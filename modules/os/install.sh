@@ -18,7 +18,6 @@ ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 date
 
 # Yum
-wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
 yum -y update
 yum -y --enablerepo=rpmforge-extras install bash-completion autojump python-pip htop ncdu dstat iotop iftop nload nethogs
 
