@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ -d /root ] && exit
+[ -d /root/.ssh ] && exit
 
 # Ssh
 ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
@@ -33,9 +33,10 @@ sed -i 's/^\$ModLoad imklog/#\$ModLoad imklog/g' /etc/rsyslog.conf
 sed 's/session    required   pam_loginuid.so/#session    required   pam_loginuid.so/g' /etc/pam.d/crond
 
 # Env
+mkdir -p /opt/extdata
 chmod 777 /tmp
 chown root.root /etc
-chmod 777 /var/run/screen
+chmod 775 /var/run/screen
 
 cat >> /etc/inputrc << EOF
 set completion-ignore-case on
@@ -81,11 +82,18 @@ cat >> /etc/screenrc << EOF
 term xterm-256color
 vbell off
 altscreen on
-shell -$SHELL
+shell -\$SHELL
 attrcolor b ".I"
 defscrollback 10000
 startup_message off
 termcapinfo xterm* 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 hardstatus alwayslastline
 hardstatus string "\${-}%{.0c}%-w%{.y0}%f%n %t%{-}%+w %=[%H] %c | Load: %l"
+EOF
+
+cat >> /root/.config/htop/htoprc << EOF
+hide_threads=0
+hide_kernel_threads=1
+hide_userland_threads=1
+shadow_other_users=1
 EOF

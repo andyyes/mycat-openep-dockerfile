@@ -1,9 +1,14 @@
 #!/bin/bash
 
-pkg="RELEASE_4_4_9.tar.gz"
-dest='/opt/www/phpmyadmin'
+ver='4.4.9'
+pkg="phpMyAdmin-${ver}-all-languages.tar.gz"
+dest='/opt/www'
+prg=`pwd`
 
-[ ! -f ${pkg} ] && wget https://github.com/phpmyadmin/phpmyadmin/archive/${pkg}
+[ ! -f ${pkg} ] && wget http://jaist.dl.sourceforge.net/project/phpmyadmin/phpMyAdmin/${ver}/${pkg}
 
 mkdir -p ${dest}
 tar zxf ${pkg} -C ${dest}
+cd ${dest}
+mv phpMyAdmin-${ver}-all-languages phpmyadmin
+cp ${prg}/config.inc.php phpmyadmin

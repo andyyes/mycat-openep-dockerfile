@@ -1,1 +1,3 @@
 *.gz
+*.zip
+modules/zsh/oh-my-zsh

@@ -1,7 +1,9 @@
 #!/bin/bash
 
+cd `dirname $0`
+
 # Install modules
-for m in os scm zsh jdk8 maven mycat mysql nginx php phpmyadmin tomcat zookeeper ice; do
+for m in os scm zsh jdk8 maven mycat mysql nginx php phpmyadmin tomcat probe zookeeper ice; do
     if [ -d ${m} ]; then
         echo -e "\n---- Install module ${m} ----"
         cd ${m}
@@ -12,5 +14,5 @@ for m in os scm zsh jdk8 maven mycat mysql nginx php phpmyadmin tomcat zookeeper
 done
 
 # Cleanup
-#rm -rf /tmp/_dt
-#yum clean all
+rm -rf /tmp/*
+yum clean all

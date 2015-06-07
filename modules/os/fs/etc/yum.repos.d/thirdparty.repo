@@ -61,3 +61,10 @@ name=Ice 3.5 for RHEL $releasever - $basearch
 baseurl=http://www.zeroc.com/download/Ice/3.5/el$releasever/$basearch
 enabled=0
 gpgcheck=0
+
+[priv]
+name=Priv Yum Repository
+baseurl=http://192.168.1.112/yum
+enabled=1
+gpgcheck=0
+priority=2
